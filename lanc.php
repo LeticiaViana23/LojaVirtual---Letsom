@@ -20,14 +20,11 @@
 
 <body>
     <?php 
-
-        session_start();
-        include 'conexao.php';
         include 'nav.php'; 
         include 'cabecalho.html';  
-        
+        include 'conexao.php';
 
-        $consulta = $cn->query('select nm_instrumento,vl_preco,ds_instrumento,qt_estoque from vw_instrumento');
+        $consulta = $cn->query('select nm_instrumento,vl_preco,ds_instrumento,qt_estoque from vw_instrumento where sg_lancamento = "S"');
     ?>
 
 

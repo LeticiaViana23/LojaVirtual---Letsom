@@ -20,14 +20,13 @@
 
 <body>
     <?php 
-
-        session_start();
-        include 'conexao.php';
         include 'nav.php'; 
         include 'cabecalho.html';  
-        
+        include 'conexao.php';
 
-        $consulta = $cn->query('select nm_instrumento,vl_preco,ds_instrumento,qt_estoque from vw_instrumento');
+        $cat = $_GET['cat'];
+
+        $consulta = $cn->query("select nm_instrumento,vl_preco,ds_instrumento,qt_estoque from vw_instrumento where ds_categoria = '$cat'");
     ?>
 
 
