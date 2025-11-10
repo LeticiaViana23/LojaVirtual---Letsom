@@ -26,7 +26,7 @@
 
         $cat = $_GET['cat'];
 
-        $consulta = $cn->query("select nm_instrumento,vl_preco,ds_instrumento,qt_estoque from vw_instrumento where ds_categoria = '$cat'");
+        $consulta = $cn->query("select cd_instrumento, nm_instrumento,vl_preco,ds_instrumento,qt_estoque from vw_instrumento where ds_categoria = '$cat'");
     ?>
 
 
@@ -41,9 +41,11 @@
                     <div><h4>R$ <?php echo number_format ($exibe['vl_preco'],2,',','.'); ?></h4></div>
 
                     <div class="text-center">
+                        <a href="detalhes.php?cd=<?php echo $exibe['cd_instrumento']; ?>">
                         <button class="btn btn-ig btn-block btn-info">
                             <span class="glyphicon glyphicon-info-sign"> </span> Detalhes
                         </button>
+                        </a>
                     </div>
 
                      <div class="text-center">
