@@ -11,6 +11,7 @@ create table tbl_categoria
 )
 default charset utf8;
 
+select * from tbl_categoria;
 
 create table tbl_marca
 (	
@@ -168,12 +169,114 @@ para apresentações ao vivo, estúdios e uso profissional em diferentes estilos
 '<p>O microfone Sennheiser é valorizado pela alta fidelidade sonora, robustez e design moderno. Garante captação clara e precisa,
  sendo uma excelente escolha para estúdios, palcos e produções profissionais.</p>', 'microfoneSennheiser','N');
  
+ insert into tbl_instrumento
+values
  
-select * from tbl_categoria;
+ (Default,'5','Microfone Neumann','16','1','6500.00','0',
+'<p>O microfone Neumann é sinônimo de excelência em estúdios profissionais. Com construção premium, oferece captação clara, detalhada 
+e natural, garantindo timbres fiéis e qualidade sonora de alto nível para gravações vocais e instrumentais.</p>', 'microfoneNeumann','S'),
 
-DELETE FROM tbl_instrumento
-WHERE cd_categoria = 2;
+ (Default,'5','Microfone Shure','17','1','1590.00','8',
+'<p>O microfone Shure é reconhecido mundialmente pela durabilidade, confiabilidade e qualidade de som. Oferece captação clara e versátil, sendo ideal 
+para apresentações ao vivo, estúdios e uso profissional em diferentes estilos musicais.</p>', 'microfoneShure','N'),
 
-select * from tbl_instrumento;
+ (Default,'5','Microfone Sennheiser','18','1','590.00','0',
+'<p>O microfone Sennheiser é valorizado pela alta fidelidade sonora, robustez e design moderno. Garante captação clara e precisa,
+ sendo uma excelente escolha para estúdios, palcos e produções profissionais.</p>', 'microfoneSennheiser','N');
+ 
+ select
+ tbl_instrumento.cd_instrumento,
+ tbl_instrumento.cd_categoria,
+ tbl_instrumento.nm_instrumento,
+ tbl_instrumento.cd_marca,
+ tbl_instrumento.no_itens,
+ tbl_instrumento. vl_preco,
+ tbl_instrumento.qt_estoque,
+ tbl_instrumento. ds_resumo,
+ tbl_instrumento.ds_instrumento,
+ tbl_instrumento.sg_lancamento
+ 
+from tbl_instrumento inner join tbl_marca
+on tbl_instrumento.cd_marca = tbl_marca.cd_marca
+inner join tbl_categoria
+on tbl_instrumento.cd_categoria = tbl_categoria.cd_categoria;
 
+create view vw_instrumento
+as select
+ tbl_instrumento.cd_instrumento,
+ tbl_instrumento.cd_categoria,
+ tbl_categoria.ds_categoria, 
+ tbl_instrumento.nm_instrumento,
+ tbl_instrumento.cd_marca,
+ tbl_instrumento.no_itens,
+ tbl_instrumento. vl_preco,
+ tbl_instrumento.qt_estoque,
+ tbl_instrumento. ds_resumo,
+ tbl_instrumento.ds_instrumento,
+ tbl_instrumento.sg_lancamento
+ 
+from tbl_instrumento inner join tbl_marca
+on tbl_instrumento.cd_marca = tbl_marca.cd_marca
+inner join tbl_categoria
+on tbl_instrumento.cd_categoria = tbl_categoria.cd_categoria;
 	
+select * from vw_instrumento;
+
+create user 'projeto'@'localhost' identified with mysql_native_password by 'leticia123';
+grant all privileges on db_lojavirtual.* to 'projeto'@'localhost' with grant option;
+
+create table tbl_usuario
+(
+cd_usuario int primary key auto_increment,
+nm_usuario varchar(80) not null,
+ds_email varchar(80) not null,
+ds_senha varchar(6) not null,
+ds_status boolean not null,
+ds_endereco varchar(80) not null,
+ds_cidade varchar(30) not null,
+no_cep char(9) not null
+)default charset utf8;
+
+insert into tbl_usuario
+values(default, 'Letícia Viana', 'leticia@gmail.com', 'let123', 1, 'Rua teste, 56',
+'Osasco', '52468-312');
+
+insert into tbl_usuario
+values(default, 'Larissa Martins', 'larissa@gmail.com', 'lari12', 0, 'Rua avião, 89',
+'Lapa', '89658-966');
+
+insert into tbl_usuario
+values(default, 'Victor Lima', 'victor@gmail.com', 'victor', 0, 'Rua Aguá Branca, 102',
+'Lapa', '18536-710');
+
+select * from tbl_usuario;
+
+select * from vw_instrumento;
+
+
+create table tbl_venda(
+cd_venda int(11) primary key auto_increment,
+no_ticket varchar(13) not null,
+cd_cliente int(11) not null,
+cd_instrumento int(11) not null,
+qt_intrumento int(11) not null,
+vl_item decimal(10,2),
+vl_total_item decimal(10,2) generated always as ((qt_intrumento * vl_item)) virtual,
+dt_venda date not null
+) default charset= utf8;
+
+insert into tbl_venda(no_ticket,cd_cliente,cd_instrumento,qt_intrumento,vl_item,dt_venda)
+values(11112222333,2,2,2,390.00,'2025-11-30');
+
+select * from tbl_venda;
+
+create view vw_venda
+as select
+tbl_venda.no_ticket,
+tbl_venda.cd_cliente,
+tbl_venda.dt_venda,
+tbl_instrumento.nm_instrumento,
+tbl_venda.qt_intrumento,
+tbl_venda.vl_total_item
+from tbl_venda inner join tbl_instrumento
+on tbl_venda.cd_instrumento = tbl_instrumento.cd_instrumento;
