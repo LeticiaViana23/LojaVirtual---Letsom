@@ -12,6 +12,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	
 	<style>
@@ -59,7 +61,7 @@
 			 
 			 <h1>Detalhes do Produto</h1>
 			 
-			 <img src="img/<?php echo $exibe['ds_instrumento']; ?>.png" class="img-responsive" style="width:100%;">
+			 <img src="img/<?php echo $exibe['ds_instrumento']; ?>" class="img-responsive" style="width:100%;">
 		
 			
 		</div>
@@ -76,7 +78,9 @@
 		<p><b>Preço: </b>R$ <?php echo number_format ($exibe['vl_preco'],2,',','.'); ?></p>
 			 
 			 
-		<button class="btn btn-lg btn-success">Comprar</button>
+		<a href="carrinho.php?cd=<?php echo $exibe['cd_instrumento']; ?>">
+            <button class="btn btn-lg btn-success">Comprar</button>
+        </a>
 				
 		</div>		
 	

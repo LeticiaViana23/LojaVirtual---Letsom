@@ -15,6 +15,9 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
 	<style>
 	
 	.navbar{
@@ -58,7 +61,7 @@
 	
 	<div class="row" style="margin-top: 15px;">
 		
-		<div class="col-sm-1 col-sm-offset-1"><img src="img/<?php echo $exibe['ds_instrumento']; ?>.png" class="img-responsive"></div>
+		<div class="col-sm-1 col-sm-offset-1"><img src="img/<?php echo $exibe['ds_instrumento']; ?>" class="img-responsive"></div>
 		<div class="col-sm-5"><h4 style="padding-top:20px"><?php echo $exibe['nm_instrumento']; ?></h4></div>
 		<div class="col-sm-2"><h4 style="padding-top:20px">R$ <?php echo number_format ($exibe['vl_preco'],2,',','.'); ?></h4></div>
 		<div class="col-sm-2 col-xs-offset-right-1" style="padding-top:20px">

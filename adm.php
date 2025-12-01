@@ -11,6 +11,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	
 <style>
@@ -60,28 +62,21 @@
 					
 				</a>
 				
-				
+				<a href="lista.php">	
 				<button type="submit" class="btn btn-block btn-lg btn-warning">
 					
 					Alterar / Excluir Produto
 					
 				</button>
+				</a>
 				
-				
-				<button type="submit" class="btn btn-block btn-lg btn-success">
-					
-					Vendas
-					
-				</button>
-				
-				
-				
+				<a href="sair.php">
 				<button type="submit" class="btn btn-block btn-lg btn-danger">
 					
 					Sair da àrea administrativa
 					
 				</button>
-				
+				</a>
 				
 				
 				

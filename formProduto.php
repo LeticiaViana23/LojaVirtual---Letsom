@@ -11,6 +11,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 <script src="jquery.mask.js"></script>
 
@@ -90,7 +92,7 @@ $('#preco').mask('000.000.000.000.000,00', {reverse: true});
 					</div>
 				
 				    <div class="form-grouprca">
-					<label for="sltautor">Marca</label>
+					<label for="sltmarca">Marca</label>
 					
 					<select class="form-control" name="sltmarca">
 					  <option value="">Selecione</option>
@@ -103,7 +105,7 @@ $('#preco').mask('000.000.000.000.000,00', {reverse: true});
 					
 					<div class="form-group">
 				
-					<label for="txtpag">Itens do Produto</label>
+					<label for="txtitens">Itens do Produto</label>
 					
 					<input type="number" class="form-control" name="txtitens" required id="txtitens">
 

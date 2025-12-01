@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style type="text/css">
         .navbar {
@@ -34,7 +35,7 @@
             <?php while($exibe = $consulta->fetch(PDO::FETCH_ASSOC)){ ?>
 
                 <div class="col-sm-3">
-                    <img src="img/<?php echo $exibe['ds_instrumento']; ?>.png" class="img-responsive" style="width:100%" alt="Image">
+                    <img src="img/<?php echo $exibe['ds_instrumento']; ?>" class="img-responsive" style="width:100%" alt="Image">
                     <div><h3><b><?php echo mb_strimwidth ($exibe['nm_instrumento'],0,30,'...'); ?></b></h3></div>
                     <div><h4>R$ <?php echo number_format ($exibe['vl_preco'],2,',','.'); ?></h4></div>
 
@@ -50,9 +51,11 @@
                         
                         <?php if($exibe['qt_estoque'] > 0){ ?>
 
+                        <a href="carrinho.php?cd=<?php echo $exibe['cd_instrumento']; ?>">
                         <button class="btn btn-ig btn-block btn-success">
                             <span class="glyphicon glyphicon-shopping-cart"> </span> Comprar 
                         </button>
+                        </a>
                         <?php } else { ?>
                             <button class="btn btn-ig btn-block btn-danger" disabled>
                                 <span class="glyphicon glyphicon-remove-circle"> </span> Indisponível
